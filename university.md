@@ -21,4 +21,16 @@ Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi
 ## corsi_laurea
 
 - id_corso PRIMARY KEY UNIQUE NOT NULL INT
-- nome corso varchar(80) not null
+- nome varchar(80) not null
+
+## corsi
+
+- id PRIMARY KEY UNIQUE NOT NULL INT
+- nome varchar(80) not null
+
+## insegnante
+
+- id_insegnante  PRIMARY KEY UNIQUE NOT NULL INT
+- nome VARCHAR(80)
+- cognome VARCHAR(80)
+- email VARCHAR(150)
