@@ -41,3 +41,9 @@ Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi
 - nome VARCHAR(80) not null
 - cognome VARCHAR(80) not null
 - numero_matricola INT not null
+
+## appello
+
+- id_esame PRIMARY KEY UNIQUE NOT NULL INT
+- data_esame DATE NOT NULL
+- aula INT NOT NULL
