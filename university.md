@@ -31,6 +31,13 @@ Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi
 ## insegnante
 
 - id_insegnante  PRIMARY KEY UNIQUE NOT NULL INT
-- nome VARCHAR(80)
-- cognome VARCHAR(80)
-- email VARCHAR(150)
+- nome VARCHAR(80) not null
+- cognome VARCHAR(80) not null
+- email VARCHAR(150) not null
+
+## studente
+
+- id_studente PRIMARY KEY UNIQUE NOT NULL INT
+- nome VARCHAR(80) not null
+- cognome VARCHAR(80) not null
+- numero_matricola INT not null
