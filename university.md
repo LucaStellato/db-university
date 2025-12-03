@@ -15,4 +15,10 @@ Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi
 ## dipartimenti
 
 - id PRIMARY KEY UNIQUE NOT NULL INT 
-- 
+- nome varchar(50) not null
+
+
+## corsi_laurea
+
+- id_corso PRIMARY KEY UNIQUE NOT NULL INT
+- nome corso varchar(80) not null
