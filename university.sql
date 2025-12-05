@@ -14,8 +14,8 @@ WHERE cfu>10
 /*Selezionare tutti gli studenti che hanno più di 30 anni
 SELECT *
 FROM students
-WHERE YEAR(date_of_birth) > 1995;
-*/
+WHERE YEAR(date_of_birth) > 1995;*/
+
 
 /*Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
 laurea (286)
@@ -76,6 +76,70 @@ FROM courses
 GROUP BY name
 ORDER BY name;
 */
+
+
+/*1.Selezionare tutti i `corsi` del `Corso di Laurea in Informatica (22) 
+
+SELECT `courses`.`id` AS `coursesId`,`courses`.`cfu`,`courses`.`name`, `courses`.`description`, `courses`.`period`, `courses`.`website`, `degrees`.`name`
+FROM `courses`
+JOIN`degrees` ON `courses`.`degree_id`=`degrees`.`id`
+WHERE `degrees`.`name`="Corso di Laurea in Informatica"
+*/
+
+
+/*2. Selezionare le informazioni sul corso con id = 144, con tutti i relativi appelli d’esame
+
+SELECT `courses`.`id` AS `courseId`, `exams`.`id` AS `examId`,`courses`.`name`, `courses`.`cfu`, `exams`.`date`, `exams`.`hour`,`exams`.`location`
+FROM courses
+JOIN `exams` ON `exams`. `course_id`= `courses`.`id`
+WHERE	 `courses`.`id`= 144
+*/
+
+/*3. Selezionare a quale dipartimento appartiene il Corso di Laurea in Diritto dell'Economia (Dipartimento di Scienze politiche, giuridiche e studi internazionali)
+
+SELECT `departments`.`name` AS `departmentsName`, `departments`.`address` AS `addressDepartments`, `departments`.`phone`, `departments`.`head_of_department`, `degrees`.`id` AS `idDegrees`, `degrees`.`name` AS `degreesName`,`degrees`.`level`
+FROM departments
+JOIN `degrees` ON `degrees`.`department_id`= `departments`.`id`
+WHERE `degrees`.`name`= "Corso di Laurea in Diritto dell'Economia"
+*/
+
+/*4. Selezionare tutti gli appelli d'esame del Corso di Laurea Magistrale in Fisica del primo anno*/
+/* exams , courses , year , degrees
+SELECT `degrees`.`name` AS `degreeName`, `courses`.`name` AS `courseName`, `courses`.`period`, `courses`.`year`, `courses`.`cfu`, `exams`.`date`, `exams`.`hour`, `exams`.`location`, `exams`.`date`
+FROM degrees
+JOIN `courses` ON `courses`.`degree_id`=`degrees`.`id`
+JOIN `exams`ON `exams`.`course_id`= `courses`.`id`
+WHERE `degrees`.`name`="Corso di Laurea Magistrale in Fisica"
+AND `courses`.`year`= 1
+*/
+
+/* Selezionare tutti i docenti che insegnano nel Corso di Laurea in Lettere (21)
+# teachers, course_teacher, courses, degrees
+SELECT DISTINCT teachers.name, teachers.surname, teachers.phone
+FROM teachers
+JOIN course_teacher ON course_teacher.teacher_id= teachers.id
+JOIN courses ON course_teacher.course_id= courses.id
+JOIN degrees ON courses.degree_id= degrees.id
+WHERE degrees.name = "Corso di Laurea in Lettere"
+*/
+/* Selezionare il libretto universitario di Mirco Messina (matricola n. 620320) 
+# student ,  courses, exams, exam_student
+SELECT students.name , students.surname, students.registration_number, courses.name AS coursesName, exam_student.vote
+FROM students
+JOIN exam_student ON exam_student.student_id= students.id
+JOIN exams ON exam_student.exam_id=exams.id
+JOIN courses ON exams.course_id= courses.id
+WHERE students.name= "Mirco"
+AND students.surname="Messina"
+AND exam_student.vote>=18
+*/
+
+
+
+
+
+
+
 
 
 
